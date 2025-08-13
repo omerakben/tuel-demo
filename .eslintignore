@@ -1,0 +1,8 @@
+lib/
+components/
+node_modules/
+.next/
+out/
+public/
+*.config.js
+*.config.mjs

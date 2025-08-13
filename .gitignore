@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local TUEL packages (use npm packages instead)
+lib/tuel/
+
+# Components from tuel-experiment (temporary)
+components/
