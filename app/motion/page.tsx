@@ -3,6 +3,7 @@
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { createMotionVariants } from "@tuel/motion";
 
 const motionExamples = [
   {
@@ -36,6 +37,59 @@ const motionExamples = [
     demo: "path"
   }
 ];
+
+// TUEL Motion Components Demo
+function TuelMotionDemo() {
+  const [selectedVariant, setSelectedVariant] = useState<keyof typeof createMotionVariants>('fadeIn');
+
+  return (
+    <div className="space-y-8">
+      {/* Motion Variants Demo */}
+      <div>
+        <h3 className="text-lg font-semibold text-white mb-4">TUEL Motion Variants</h3>
+        <div className="flex gap-2 mb-4">
+          {Object.keys(createMotionVariants).map((variant) => (
+            <button
+              key={variant}
+              onClick={() => setSelectedVariant(variant as keyof typeof createMotionVariants)}
+              className={`px-3 py-1 rounded ${
+                selectedVariant === variant 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-white/10 text-gray-300'
+              }`}
+            >
+              {variant}
+            </button>
+          ))}
+        </div>
+        <motion.div
+          key={selectedVariant}
+          initial="hidden"
+          animate="visible"
+          variants={createMotionVariants[selectedVariant]}
+          className="w-32 h-32 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl mx-auto"
+        />
+      </div>
+
+      {/* Combined Animations */}
+      <div>
+        <h3 className="text-lg font-semibold text-white mb-4">Combined Animations</h3>
+        <div className="flex gap-4 justify-center">
+          {['fadeIn', 'slideUp', 'scaleIn'].map((variant, index) => (
+            <motion.div
+              key={variant}
+              initial="hidden"
+              animate="visible"
+              variants={createMotionVariants[variant as keyof typeof createMotionVariants]}
+              transition={{ delay: index * 0.2 }}
+              className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // Demo Components
 function SpringDemo() {
@@ -206,6 +260,17 @@ export default function MotionPage() {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Core animation utilities and primitives for building complex motion experiences.
           </p>
+        </motion.div>
+
+        {/* Live TUEL Motion Components */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-16 p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl"
+        >
+          <h2 className="text-2xl font-bold text-white mb-6">@tuel/motion Components</h2>
+          <TuelMotionDemo />
         </motion.div>
 
         {/* Demo Grid */}

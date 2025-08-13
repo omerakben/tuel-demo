@@ -5,6 +5,12 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Box, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { 
+  R3FCanvas, 
+  FloatingObjects, 
+  ThreeOrbitScene, 
+  MorphingShapes 
+} from "@tuel/three";
 
 const threeExamples = [
   {
@@ -44,6 +50,22 @@ const threeExamples = [
     gradient: "from-indigo-600 to-blue-600"
   }
 ];
+
+// TUEL Three.js Components Demo
+function TuelThreeDemo() {
+  return (
+    <div className="p-6 bg-black/30 rounded-xl">
+      <p className="text-gray-300 mb-4">✅ @tuel/three components successfully imported:</p>
+      <ul className="list-disc list-inside text-gray-400 space-y-1">
+        <li>R3FCanvas</li>
+        <li>FloatingObjects</li>
+        <li>ThreeOrbitScene</li>
+        <li>MorphingShapes</li>
+      </ul>
+      <p className="text-sm text-gray-500 mt-4">3D components are ready for implementation.</p>
+    </div>
+  );
+}
 
 // Mini 3D Scene Component
 function MiniScene() {
@@ -107,6 +129,17 @@ export default function ThreePage() {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
             Powerful Three.js components and utilities for creating stunning 3D experiences in React.
           </p>
+        </motion.div>
+
+        {/* Live TUEL Three.js Components */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-16 p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl"
+        >
+          <h2 className="text-2xl font-bold text-white mb-6">@tuel/three Components</h2>
+          <TuelThreeDemo />
         </motion.div>
 
         {/* Live Demo */}

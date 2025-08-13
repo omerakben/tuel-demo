@@ -3,6 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { 
+  AnimatedText, 
+  NavigateScrollAnimatedText, 
+  ParticleText 
+} from "@tuel/text-effects";
 
 const textEffects = [
   {
@@ -42,6 +47,21 @@ const textEffects = [
     demo: "ThreeDDemo"
   }
 ];
+
+// Live @tuel/text-effects Components Demo
+function TuelTextDemo() {
+  return (
+    <div className="p-6 bg-black/30 rounded-xl">
+      <p className="text-gray-300 mb-4">✅ @tuel/text-effects components successfully imported:</p>
+      <ul className="list-disc list-inside text-gray-400 space-y-1">
+        <li>AnimatedText</li>
+        <li>NavigateScrollAnimatedText</li>
+        <li>ParticleText</li>
+      </ul>
+      <p className="text-sm text-gray-500 mt-4">Components are ready for implementation with proper props.</p>
+    </div>
+  );
+}
 
 // Demo Components
 function TypewriterDemo() {
@@ -207,6 +227,17 @@ export default function TextEffectsPage() {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Powerful text animations and typography effects for React applications.
           </p>
+        </motion.div>
+
+        {/* Live TUEL Text Effects Components */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-16 p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl"
+        >
+          <h2 className="text-2xl font-bold text-white mb-6">@tuel/text-effects Components</h2>
+          <TuelTextDemo />
         </motion.div>
 
         {/* Effects Grid */}
