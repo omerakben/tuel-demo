@@ -11,7 +11,7 @@
   "dependencies": {
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",
-    "@tuel/gallery": "1.1.2",
+    "@tuel/gallery": "file:../tuel/packages/gallery",
     "@tuel/interaction": "1.1.2",
     "@tuel/motion": "1.1.2",
     "@tuel/performance": "1.1.2",
