@@ -39,7 +39,7 @@ export default function HorizontalScrollPage() {
     });
 
     // Parallax effect for images
-    gsap.utils.toArray(".slide-image").forEach((image: any, i) => {
+    gsap.utils.toArray(".slide-image").forEach((image: unknown, i) => {
       gsap.to(image, {
         x: -100 * (i + 1),
         ease: "none",
